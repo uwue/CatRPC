@@ -4,6 +4,7 @@ import random
 import ctypes
 import json
 import requests
+import os
 
 ctypes.windll.kernel32.SetConsoleTitleW("CatRPC by uwue")
 
@@ -14,6 +15,8 @@ rpc.connect()
 
 cats = (1, 2, 3, 4, 5, 6, 7, 8, 10, 11, 12, 13, 14)
 
+loops = 0
+
 # RPC Loop
 while True:
 
@@ -21,5 +24,7 @@ while True:
     cat_fact = data.json()["fact"]
     random_cat = random.choice(cats)
     rpc.update(small_image = 'small', large_image = str(random_cat), small_text= 'another cat!', large_text= str(cat_fact)[:128])
-    print('RPC set successfully.')
+    print('Looped ' + str(loops) + ' times!')
+    loops = loops+1
     time.sleep(10)
+    os.system('cls')
